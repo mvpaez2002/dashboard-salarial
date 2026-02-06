@@ -1,51 +1,117 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>El mapa de los salarios: análisis global de ingresos</title>
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 40px;
-      line-height: 1.6;
-    }
-    h1, h2 {
-      color: #2c3e50;
-    }
-    iframe {
-      width: 100%;
-      height: 800px;
-      border: none;
-    }
-    .creditos {
-      margin-top: 40px;
-      font-size: 0.9em;
-      color: #555;
-    }
+    body { font-family: Arial, sans-serif; margin: 40px; line-height: 1.6; color:#222; }
+    h1, h2, h3 { color: #2c3e50; }
+    iframe { width: 100%; height: 820px; border: none; }
+    .creditos { margin-top: 32px; font-size: 0.95em; color: #555; }
+    .box { background:#f7f9fb; border:1px solid #e6edf3; padding:16px 18px; border-radius:10px; }
+    table { width:100%; border-collapse: collapse; margin: 14px 0 24px; }
+    th, td { border:1px solid #e6edf3; padding:10px; vertical-align: top; }
+    th { background:#f2f6fa; text-align:left; }
+    code { background:#f2f2f2; padding:2px 6px; border-radius:6px; }
+    .small { font-size: 0.92em; color:#444; }
   </style>
 </head>
 <body>
 
   <h1>El mapa de los salarios: análisis global de ingresos</h1>
 
-  <p>
-    Este sitio presenta un análisis descriptivo de una encuesta salarial, integrando
-    distribución geográfica, salarios promedio por industria y la distribución general
-    de los ingresos totales anuales convertidos a pesos colombianos (COP).
-  </p>
+  <div class="box">
+    <p>
+      Este sitio presenta un análisis descriptivo de una encuesta salarial, integrando distribución geográfica,
+      salarios promedio por industria y la distribución general de los ingresos totales anuales convertidos a pesos
+      colombianos (COP).
+    </p>
+  </div>
 
   <h2>Dashboard</h2>
-
-  <!-- AQUÍ VA EL DASHBOARD -->
-  <iframe 
-    src="https://lookerstudio.google.com/embed/reporting/9806a081-5822-4567-a5d9-b4967aa83a68/page/67mnF">
+  <iframe
+    src="https://lookerstudio.google.com/embed/reporting/9806a081-5822-4567-a5d9-b4967aa83a68/page/67mnF"
+    allowfullscreen>
   </iframe>
 
   <div class="creditos">
     <p><strong>Fuente de datos:</strong> Encuesta salarial (base original del ejercicio).</p>
-    <p><strong>Conversión monetaria:</strong> Valores convertidos a COP usando la TRM USD/COP = 3.956,54 (Banco de la República).</p>
+    <p><strong>Conversión monetaria:</strong> Valores convertidos a COP usando la TRM USD/COP = 3.956,54 (Banco de la República de Colombia).</p>
     <p><strong>Elaborado por:</strong> Nombre del grupo.</p>
   </div>
 
+  <hr style="margin:40px 0; border:none; border-top:1px solid #e6edf3;">
+
+  <h2>Documentación del modelado</h2>
+
+  <h3>1) Variables en la base de datos original</h3>
+  <p class="small">
+    Los nombres de las variables se mantienen en <strong>inglés</strong> (tal cual aparecen en la base original).
+    Las descripciones están en español.
+  </p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Variable (original)</th>
+        <th>Tipo</th>
+        <th>Descripción</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td><code>How old are you?</code></td><td>Número</td><td>Edad de la persona encuestada.</td></tr>
+      <tr><td><code>What industry do you work in?</code></td><td>Texto</td><td>Industria o sector económico en el que trabaja.</td></tr>
+      <tr><td><code>Job title</code></td><td>Texto</td><td>Cargo o título del puesto de trabajo principal.</td></tr>
+      <tr><td><code>If your job title needs additional context, please clarify here:</code></td><td>Texto</td><td>Información adicional para aclarar el cargo.</td></tr>
+      <tr><td><code>What is your annual salary?</code></td><td>Número</td><td>Salario anual reportado en moneda local.</td></tr>
+      <tr><td><code>How much additional monetary compensation do you get, if any...</code></td><td>Número</td><td>Compensaciones monetarias adicionales (bonos, horas extra, etc.).</td></tr>
+      <tr><td><code>Please indicate the currency</code></td><td>Texto</td><td>Moneda en la que se reportó el salario/compensación.</td></tr>
+      <tr><td><code>If "Other," please indicate the currency here:</code></td><td>Texto</td><td>Moneda especificada cuando se selecciona “Other”.</td></tr>
+      <tr><td><code>If your income needs additional context, please provide it here:</code></td><td>Texto</td><td>Comentarios adicionales sobre el ingreso.</td></tr>
+      <tr><td><code>What country do you work in?</code></td><td>Texto</td><td>País en el que trabaja la persona.</td></tr>
+      <tr><td><code>If you're in the U.S., what state do you work in?</code></td><td>Texto</td><td>Estado de trabajo (si aplica para EE. UU.).</td></tr>
+      <tr><td><code>What city do you work in?</code></td><td>Texto</td><td>Ciudad reportada por el encuestado (no estandarizada).</td></tr>
+      <tr><td><code>How many years of professional work experience do you have overall?</code></td><td>Número</td><td>Años totales de experiencia profesional.</td></tr>
+      <tr><td><code>How many years of professional work experience do you have in your field?</code></td><td>Número</td><td>Años de experiencia en el campo actual.</td></tr>
+      <tr><td><code>What is your highest level of education completed?</code></td><td>Texto</td><td>Nivel educativo más alto completado.</td></tr>
+      <tr><td><code>What is your gender?</code></td><td>Texto</td><td>Género reportado por el encuestado.</td></tr>
+      <tr><td><code>What is your race? (Choose all that apply.)</code></td><td>Texto</td><td>Identidad racial/étnica reportada (selección múltiple).</td></tr>
+    </tbody>
+  </table>
+
+  <h3>2) Variables luego de modeladas</h3>
+  <p class="small">
+    Se adoptó <strong>español</strong> para los campos modelados y se mantuvo consistencia en nombres y descripciones.
+  </p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Variable modelada</th>
+        <th>Tipo</th>
+        <th>Descripción</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td><code>salario_anual</code></td><td>Número</td><td>Salario anual convertido a COP usando la TRM/tasas vigentes del día del ejercicio.</td></tr>
+      <tr><td><code>compensaciones</code></td><td>Número</td><td>Compensaciones monetarias convertidas a COP con la misma referencia de tasa.</td></tr>
+      <tr><td><code>salario_total</code></td><td>Número</td><td>Suma de <code>salario_anual</code> + <code>compensaciones</code> en COP.</td></tr>
+      <tr><td><code>country_sucio</code></td><td>Texto</td><td>Valor original del país, preservado para trazabilidad.</td></tr>
+      <tr><td><code>city_sucio</code></td><td>Texto</td><td>Valor original de ciudad, preservado para trazabilidad.</td></tr>
+    </tbody>
+  </table>
+
+  <h3>3) Procedimiento para actualizar datos y aplicar el modelado</h3>
+  <ol>
+    <li><strong>Actualizar la base:</strong> reemplazar la fuente de datos por la nueva versión (misma estructura y nombres de columnas).</li>
+    <li><strong>Consultar TRM/tasas:</strong> obtener la TRM USD/COP del Banco de la República para el día del ejercicio y definir tasas para otras monedas usadas en el dataset.</li>
+    <li><strong>Actualizar conversiones:</strong> editar los campos calculados de conversión y reemplazar los valores de tasa por los del día.</li>
+    <li><strong>Recalcular campos:</strong> verificar que <code>salario_anual</code>, <code>compensaciones</code> y <code>salario_total</code> se actualicen sin errores.</li>
+    <li><strong>Validar:</strong> revisar nulos/outliers, confirmar que no haya doble conversión y que los gráficos respondan a la actualización.</li>
+    <li><strong>Publicar:</strong> actualizar el texto de créditos con la TRM (y fecha) utilizada y verificar que el dashboard embebido cargue correctamente.</li>
+  </ol>
+
 </body>
 </html>
+
