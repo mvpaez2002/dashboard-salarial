@@ -1,372 +1,226 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>¿Quién consume, cuánto y con qué impacto operativo?</title>
-  <style>
-    body { font-family: Arial, sans-serif; margin: 40px; line-height: 1.6; color:#222; }
-    h1, h2, h3 { color: #4169E1; }
-    iframe { width: 100%; height: 820px; border: none; }
-    .creditos { margin-top: 32px; font-size: 0.95em; color: #555; }
-    .box { background:#f7f9fb; border:1px solid #e6edf3; padding:16px 18px; border-radius:10px; }
-    table { width:100%; border-collapse: collapse; margin: 14px 0 24px; }
-    th, td { border:1px solid #e6edf3; padding:10px; vertical-align: top; }
-    th { background:#f2f6fa; text-align:left; }
-    code { background:#f2f2f2; padding:2px 6px; border-radius:6px; }
-    .small { font-size: 0.92em; color:#444; }
-  </style>
-</head>
-<body>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>¿Quién consume, cuánto y con qué impacto operativo?</title>
 
-  <h1>¿Quién consume, cuánto y con qué impacto operativo?</h1>
-
-  <div class="box">
-    <p>
-      SLB es una empresa global destacada en servicios y tecnología para el sector energético, enfocada en ofrecer soluciones para la búsqueda, desarrollo y extracción de recursos energéticos. Con presencia en más de 100 naciones y actividades a lo largo de América Latina, la empresa combina innovación tecnológica, habilidades operativas y conocimiento técnico para mejorar procesos en toda la cadena de valor de la industria de hidrocarburos.
-    </p>
-    <p>
-      Este dashboard busca ofrecer una perspectiva clara, organizada y estratégica de las operaciones de adquisición de materiales requeridos para el desarrollo de las actividades de la empresa en América. Mediante el examen de indicadores cruciales, patrones de adquisición y comportamiento de proveedores, esta herramienta pretende simplificar la toma de decisiones, aumentar la eficiencia operativa y reforzar el control sobre los procesos de abastecimiento.
-    </p>
-  </div>
-
-  <style>
-.dashboard-container {
-  position: relative;
-  width: 100%;
-  height: 500vh;
+<style>
+/* ====== ESTILO GENERAL ====== */
+body {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  margin: 0;
+  background-color: #f4f6fb;
+  color: #1f2937;
+  line-height: 1.6;
 }
-
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: auto;
+  padding: 40px 0;
+}
+/* ====== TITULOS ====== */
+h1 {
+  font-size: 2.2rem;
+  color: #4169E1;
+  margin-bottom: 10px;
+}
+h2 {
+  margin-top: 60px;
+  font-size: 1.6rem;
+  color: #4169E1;
+  border-left: 6px solid #4169E1;
+  padding-left: 12px;
+}
+h3 {
+  margin-top: 40px;
+  font-size: 1.2rem;
+  color: #4169E1;
+}
+/* ====== CAJA INTRO ====== */
+.box {
+  background: white;
+  border-left: 6px solid #4169E1;
+  padding: 24px;
+  border-radius: 10px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.05);
+  margin-top: 20px;
+}
+/* ====== DASHBOARD ====== */
+.dashboard-container {
+  margin-top: 30px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+}
 .dashboard-container iframe {
   width: 100%;
-  height: 100%;
+  height: 100vh;
   border: none;
 }
+/* ====== TABLAS ====== */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.05);
+}
+thead {
+  background-color: #4169E1;
+  color: white;
+}
+th, td {
+  padding: 14px 16px;
+  text-align: left;
+}
+th {
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+tbody tr:nth-child(even) {
+  background-color: #f4f7ff;
+}
+tbody tr:hover {
+  background-color: #e8edff;
+  transition: 0.2s ease-in-out;
+}
+/* ====== CODIGO ====== */
+code {
+  background: #eef2ff;
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  color: #1e3a8a;
+}
+/* ====== LISTAS ====== */
+ol {
+  margin-top: 20px;
+  padding-left: 20px;
+}
+ol li {
+  margin-bottom: 14px;
+}
+/* ====== CONCLUSION ====== */
+.conclusion {
+  margin-top: 30px;
+  padding: 24px;
+  background: white;
+  border-left: 6px solid #4169E1;
+  border-radius: 10px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.05);
+}
+hr {
+  border: none;
+  border-top: 1px solid #e5e7eb;
+  margin: 60px 0;
+}
 </style>
+</head>
 
-<h2>Dashboard</h2>
+<body>
+<div class="container">
 
-<div class="dashboard-container">
-  <iframe
-    src="https://lookerstudio.google.com/embed/reporting/05af20bb-5a02-43e4-9dc9-0892a19ef287/page/Wc7mF"
-    allowfullscreen>
-  </iframe>
+<h1>¿Quién consume, cuánto y con qué impacto operativo?</h1>
+
+<div class="box">
+  <p>
+    SLB es una empresa global destacada en servicios y tecnología para el sector energético, enfocada en ofrecer soluciones para la búsqueda, desarrollo y extracción de recursos energéticos. Con presencia en más de 100 naciones y actividades a lo largo de América Latina, la empresa combina innovación tecnológica, habilidades operativas y conocimiento técnico para mejorar procesos en toda la cadena de valor de la industria de hidrocarburos.
+  </p>
+  <p>
+    Este dashboard busca ofrecer una perspectiva clara, organizada y estratégica de las operaciones de adquisición de materiales requeridos para la empresa en América. Mediante el examen de indicadores cruciales, patrones de adquisición y comportamiento de proveedores, esta herramienta simplifica la toma de decisiones, aumenta la eficiencia operativa y refuerza el control sobre los procesos de abastecimiento.
+  </p>
 </div>
 
-  <h2>Documentación del modelado</h2>
+<h2>Dashboard</h2>
+<div class="dashboard-container">
+  <iframe src="https://lookerstudio.google.com/embed/reporting/05af20bb-5a02-43e4-9dc9-0892a19ef287/page/Wc7mF" allowfullscreen></iframe>
+</div>
 
-  <h3>1) Variables en la base de datos original</h3>
+<h2>Documentación del Modelado</h2>
 
-  <table>
-    <thead>
-      <tr>
-        <th>Variable</th>
-        <th>Tipo</th>
-        <th>Descripción</th>
-        <th>Ejemplos</th>
-        
-      </tr>
-    </thead>
-    <tbody>
-  <tr>
-    <td><code>PR Number</code></td>
-    <td>Texto</td>
-    <td>Identificador único de la requisición</td>
-    <td>PO 4519583712</td>
-  </tr>
-
-  <tr>
-    <td><code>Buyer Alias Final</code></td>
-    <td>Categórica Nominal</td>
-    <td>Alias del comprador responsable</td>
-    <td>Confidential</td>
-  </tr>
-
-  <tr>
-    <td><code>SubCategory_Final</code></td>
-    <td>Categórica Nominal</td>
-    <td>Clasificación estratégica o táctica del ítem</td>
-    <td>Tactical</td>
-  </tr>
-
-  <tr>
-    <td><code>Commodity</code></td>
-    <td>Categórica Nominal</td>
-    <td>Código y descripción del commodity</td>
-    <td>[CBCGA01P] Acetylene</td>
-  </tr>
-
-  <tr>
-    <td><code>Categoria del Item</code></td>
-    <td>Categórica Nominal</td>
-    <td>Clasificación macro del bien o servicio</td>
-    <td>Chemicals</td>
-  </tr>
-
-  <tr>
-    <td><code>Week Days</code></td>
-    <td>Numérica Discreta</td>
-    <td>Días hábiles entre creación y aprobación</td>
-    <td>0</td>
-  </tr>
-
-  <tr>
-    <td><code>PR Creation Date</code></td>
-    <td>Temporal</td>
-    <td>Fecha de creación de la requisición</td>
-    <td>15/01/2026</td>
-  </tr>
-
-  <tr>
-    <td><code>Approved Date</code></td>
-    <td>Temporal</td>
-    <td>Fecha de aprobación</td>
-    <td>15/01/2026</td>
-  </tr>
-
-  <tr>
-    <td><code>PR Source</code></td>
-    <td>Categórica Nominal</td>
-    <td>Sistema de origen de la PR</td>
-    <td>Ariba</td>
-  </tr>
-
-  <tr>
-    <td><code>Company Code</code></td>
-    <td>Categórica Nominal</td>
-    <td>Código organizacional</td>
-    <td>CO01</td>
-  </tr>
-
-  <tr>
-    <td><code>Pais</code></td>
-    <td>Categórica Nominal</td>
-    <td>País asociado al Company Code</td>
-    <td>Colombia</td>
-  </tr>
-
-  <tr>
-    <td><code>Requester ID</code></td>
-    <td>Texto</td>
-    <td>Usuario solicitante interno</td>
-    <td>Rogelio Reyes Cruz</td>
-  </tr>
-
-  <tr>
-    <td><code>Item Description</code></td>
-    <td>Texto</td>
-    <td>Descripción detallada del ítem</td>
-    <td>Recarga Acetileno</td>
-  </tr>
-
-  <tr>
-    <td><code>Sum of Requisition Spend USD</code></td>
-    <td>Numérica Continua</td>
-    <td>Valor total de la requisición en USD</td>
-    <td>1.245</td>
-  </tr>
-
-  <tr>
-    <td><code>Urgent Flag</code></td>
-    <td>Binaria</td>
-    <td>Indica si la PR fue marcada como urgente</td>
-    <td>Yes / No</td>
-  </tr>
-
-  <tr>
-    <td><code>OTS_2_Days</code></td>
-    <td>Categórica Binaria</td>
-    <td>Cumplimiento SLA a 2 días</td>
-    <td>OK SLA / Late</td>
-  </tr>
-
-  <tr>
-    <td><code>OTS_5_Days</code></td>
-    <td>Categórica Binaria</td>
-    <td>Cumplimiento SLA a 5 días</td>
-    <td>OK SLA / Late</td>
-  </tr>
-
-  <tr>
-    <td><code>OTS_10_Days</code></td>
-    <td>Categórica Binaria</td>
-    <td>Cumplimiento SLA a 10 días</td>
-    <td>OK SLA / Late</td>
-  </tr>
-</tbody>
-  </table>
-
-  <h3>Variables Modeladas y Derivadas (ETL)</h3>
-
+<h3>1) Variables en la base de datos original</h3>
 <table>
-  <thead>
-    <tr>
-      <th>Variable Modelada</th>
-      <th>Tipo de Dato</th>
-      <th>Descripción Funcional</th>
-      <th>Origen / Regla de Cálculo</th>
-    </tr>
-  </thead>
-  <tbody>
-
-    <tr>
-      <td><code>buyer_alias_std</code></td>
-      <td>Categórica Nominal</td>
-      <td>Nombre del comprador estandarizado.</td>
-      <td>Normalización de texto sobre Buyer Alias Final.</td>
-    </tr>
-
-    <tr>
-      <td><code>item_description_clean</code></td>
-      <td>Texto</td>
-      <td>Descripción del ítem limpia sin caracteres especiales ni espacios duplicados.</td>
-      <td>Proceso de limpieza sobre Item Description.</td>
-    </tr>
-
-    <tr>
-      <td><code>categoria_homologada</code></td>
-      <td>Categórica Nominal</td>
-      <td>Categoría estratégica estandarizada para análisis.</td>
-      <td>Homologación de SubCategory_Final.</td>
-    </tr>
-
-    <tr>
-      <td><code>spend_usd_num</code></td>
-      <td>Numérica Continua</td>
-      <td>Valor monetario limpio en formato numérico para cálculos.</td>
-      <td>Eliminación de símbolo "$" + conversión a número.</td>
-    </tr>
-
-    <tr>
-      <td><code>lead_time_days</code></td>
-      <td>Numérica Discreta</td>
-      <td>Días hábiles entre creación y aprobación de la PR.</td>
-      <td>Approved Date – PR Creation Date.</td>
-    </tr>
-
-    <tr>
-      <td><code>SLA_2_Flag</code></td>
-      <td>Binaria (0/1)</td>
-      <td>Valor 1 si cumple SLA a 2 días.</td>
-      <td>Si OTS_2_Days = "OK SLA" entonces 1, de lo contrario 0.</td>
-    </tr>
-
-    <tr>
-      <td><code>SLA_5_Flag</code></td>
-      <td>Binaria (0/1)</td>
-      <td>Valor 1 si cumple SLA a 5 días.</td>
-      <td>Si OTS_5_Days = "OK SLA" entonces 1, de lo contrario 0.</td>
-    </tr>
-
-    <tr>
-      <td><code>SLA_10_Flag</code></td>
-      <td>Binaria (0/1)</td>
-      <td>Valor 1 si cumple SLA a 10 días.</td>
-      <td>Si OTS_10_Days = "OK SLA" entonces 1, de lo contrario 0.</td>
-    </tr>
-
-    <tr>
-      <td><code>pct_sla_2</code></td>
-      <td>Numérica Continua (%)</td>
-      <td>Porcentaje de cumplimiento SLA a 2 días.</td>
-      <td>SUM(SLA_2_Flag) / COUNT(PR Number).</td>
-    </tr>
-
-    <tr>
-      <td><code>pct_sla_5</code></td>
-      <td>Numérica Continua (%)</td>
-      <td>Porcentaje de cumplimiento SLA a 5 días.</td>
-      <td>SUM(SLA_5_Flag) / COUNT(PR Number).</td>
-    </tr>
-
-    <tr>
-      <td><code>pct_sla_10</code></td>
-      <td>Numérica Continua (%)</td>
-      <td>Porcentaje de cumplimiento SLA a 10 días.</td>
-      <td>SUM(SLA_10_Flag) / COUNT(PR Number).</td>
-    </tr>
-
-    <tr>
-      <td><code>avg_spend_categoria</code></td>
-      <td>Numérica Continua</td>
-      <td>Gasto promedio por categoría.</td>
-      <td>AVG(spend_usd_num) agrupado por categoría.</td>
-    </tr>
-
-    <tr>
-      <td><code>avg_spend_pais</code></td>
-      <td>Numérica Continua</td>
-      <td>Gasto promedio por país.</td>
-      <td>AVG(spend_usd_num) agrupado por país.</td>
-    </tr>
-
-    <tr>
-      <td><code>avg_spend_buyer</code></td>
-      <td>Numérica Continua</td>
-      <td>Gasto promedio por comprador.</td>
-      <td>AVG(spend_usd_num) agrupado por buyer_alias_std.</td>
-    </tr>
-
-  </tbody>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Tipo</th>
+<th>Descripción</th>
+<th>Ejemplo</th>
+</tr>
+</thead>
+<tbody>
+<tr><td><code>PR Number</code></td><td>Texto</td><td>Identificador único de la requisición</td><td>PO 4519583712</td></tr>
+<tr><td><code>Buyer Alias Final</code></td><td>Categórica Nominal</td><td>Alias del comprador responsable</td><td>Confidential</td></tr>
+<tr><td><code>SubCategory_Final</code></td><td>Categórica Nominal</td><td>Clasificación estratégica o táctica del ítem</td><td>Tactical</td></tr>
+<tr><td><code>Commodity</code></td><td>Categórica Nominal</td><td>Código y descripción del commodity</td><td>[CBCGA01P] Acetylene</td></tr>
+<tr><td><code>Categoria del Item</code></td><td>Categórica Nominal</td><td>Clasificación macro del bien o servicio</td><td>Chemicals</td></tr>
+<tr><td><code>Week Days</code></td><td>Numérica Discreta</td><td>Días hábiles entre creación y aprobación</td><td>0</td></tr>
+<tr><td><code>PR Creation Date</code></td><td>Temporal</td><td>Fecha de creación de la requisición</td><td>15/01/2026</td></tr>
+<tr><td><code>Approved Date</code></td><td>Temporal</td><td>Fecha de aprobación</td><td>15/01/2026</td></tr>
+<tr><td><code>PR Source</code></td><td>Categórica Nominal</td><td>Sistema de origen de la PR</td><td>Ariba</td></tr>
+<tr><td><code>Company Code</code></td><td>Categórica Nominal</td><td>Código organizacional</td><td>CO01</td></tr>
+<tr><td><code>Pais</code></td><td>Categórica Nominal</td><td>País asociado al Company Code</td><td>Colombia</td></tr>
+<tr><td><code>Requester ID</code></td><td>Texto</td><td>Usuario solicitante interno</td><td>Rogelio Reyes Cruz</td></tr>
+<tr><td><code>Item Description</code></td><td>Texto</td><td>Descripción detallada del ítem</td><td>Recarga Acetileno</td></tr>
+<tr><td><code>Sum of Requisition Spend USD</code></td><td>Numérica Continua</td><td>Valor total de la requisición en USD</td><td>1.245</td></tr>
+<tr><td><code>Urgent Flag</code></td><td>Binaria</td><td>Indica si la PR fue marcada como urgente</td><td>Yes / No</td></tr>
+<tr><td><code>OTS_2_Days</code></td><td>Categórica Binaria</td><td>Cumplimiento SLA a 2 días</td><td>OK SLA / Late</td></tr>
+<tr><td><code>OTS_5_Days</code></td><td>Categórica Binaria</td><td>Cumplimiento SLA a 5 días</td><td>OK SLA / Late</td></tr>
+<tr><td><code>OTS_10_Days</code></td><td>Categórica Binaria</td><td>Cumplimiento SLA a 10 días</td><td>OK SLA / Late</td></tr>
+</tbody>
 </table>
 
-  
+<h3>Variables Modeladas y Derivadas (ETL)</h3>
+<table>
+<thead>
+<tr>
+<th>Variable Modelada</th>
+<th>Tipo de Dato</th>
+<th>Descripción Funcional</th>
+<th>Origen / Regla de Cálculo</th>
+</tr>
+</thead>
+<tbody>
+<tr><td><code>buyer_alias_std</code></td><td>Categórica Nominal</td><td>Nombre del comprador estandarizado.</td><td>Normalización de texto sobre Buyer Alias Final.</td></tr>
+<tr><td><code>item_description_clean</code></td><td>Texto</td><td>Descripción del ítem limpia sin caracteres especiales ni espacios duplicados.</td><td>Proceso de limpieza sobre Item Description.</td></tr>
+<tr><td><code>categoria_homologada</code></td><td>Categórica Nominal</td><td>Categoría estratégica estandarizada para análisis.</td><td>Homologación de SubCategory_Final.</td></tr>
+<tr><td><code>spend_usd_num</code></td><td>Numérica Continua</td><td>Valor monetario limpio en formato numérico para cálculos.</td><td>Eliminación de símbolo "$" + conversión a número.</td></tr>
+<tr><td><code>lead_time_days</code></td><td>Numérica Discreta</td><td>Días hábiles entre creación y aprobación de la PR.</td><td>Approved Date – PR Creation Date.</td></tr>
+<tr><td><code>SLA_2_Flag</code></td><td>Binaria (0/1)</td><td>Valor 1 si cumple SLA a 2 días.</td><td>Si OTS_2_Days = "OK SLA" entonces 1, de lo contrario 0.</td></tr>
+<tr><td><code>SLA_5_Flag</code></td><td>Binaria (0/1)</td><td>Valor 1 si cumple SLA a 5 días.</td><td>Si OTS_5_Days = "OK SLA" entonces 1, de lo contrario 0.</td></tr>
+<tr><td><code>SLA_10_Flag</code></td><td>Binaria (0/1)</td><td>Valor 1 si cumple SLA a 10 días.</td><td>Si OTS_10_Days = "OK SLA" entonces 1, de lo contrario 0.</td></tr>
+<tr><td><code>pct_sla_2</code></td><td>Numérica Continua (%)</td><td>Porcentaje de cumplimiento SLA a 2 días.</td><td>SUM(SLA_2_Flag) / COUNT(PR Number).</td></tr>
+<tr><td><code>pct_sla_5</code></td><td>Numérica Continua (%)</td><td>Porcentaje de cumplimiento SLA a 5 días.</td><td>SUM(SLA_5_Flag) / COUNT(PR Number).</td></tr>
+<tr><td><code>pct_sla_10</code></td><td>Numérica Continua (%)</td><td>Porcentaje de cumplimiento SLA a 10 días.</td><td>SUM(SLA_10_Flag) / COUNT(PR Number).</td></tr>
+<tr><td><code>avg_spend_categoria</code></td><td>Numérica Continua</td><td>Gasto promedio por categoría.</td><td>AVG(spend_usd_num) agrupado por categoría.</td></tr>
+<tr><td><code>avg_spend_pais</code></td><td>Numérica Continua</td><td>Gasto promedio por país.</td><td>AVG(spend_usd_num) agrupado por país.</td></tr>
+<tr><td><code>avg_spend_buyer</code></td><td>Numérica Continua</td><td>Gasto promedio por comprador.</td><td>AVG(spend_usd_num) agrupado por buyer_alias_std.</td></tr>
+</tbody>
+</table>
 
-  <h3>3) Procedimiento para actualizar datos y aplicar el modelado</h3>
+<h3>3) Procedimiento para actualizar datos y aplicar el modelado</h3>
 <ol>
-  <li>
-    <strong>Actualizar la base:</strong>
-    reemplazar la fuente de datos por la versión más reciente, verificando que la estructura,
-    nombres de columnas y tipos de datos se mantengan consistentes con el modelo definido.
-  </li>
-
-  <li>
-    <strong>Ejecutar proceso ETL:</strong>
-    aplicar limpieza y transformación de datos, incluyendo normalización de Buyer Alias,
-    homologación de categorías, limpieza de descripciones de ítems y estandarización de formatos.
-  </li>
-
-  <li>
-    <strong>Transformación monetaria:</strong>
-    eliminar símbolos de moneda, convertir los valores a formato numérico y actualizar
-    el campo <code>spend_usd_num</code> para asegurar cálculos correctos.
-  </li>
-
-  <li>
-    <strong>Actualizar variables derivadas:</strong>
-    recalcular <code>lead_time_days</code> (Approved Date – PR Creation Date) y
-    regenerar los indicadores <code>SLA_2_Flag</code>, <code>SLA_5_Flag</code> y
-    <code>SLA_10_Flag</code>.
-  </li>
-
-  <li>
-    <strong>Recalcular métricas KPI:</strong>
-    actualizar porcentajes de cumplimiento SLA, promedios de spend por categoría,
-    país y comprador, asegurando coherencia en agregaciones.
-  </li>
-
-  <li>
-    <strong>Validación de calidad:</strong>
-    revisar registros duplicados, valores negativos o en cero en Spend, PR sin fecha
-    de aprobación y posibles inconsistencias entre Company Code y País.
-  </li>
-
-  <li>
-    <strong>Validar modelo y visualizaciones:</strong>
-    comprobar relaciones del modelo estrella (hechos y dimensiones) y confirmar
-    que los dashboards reflejen correctamente los datos actualizados.
-  </li>
-
-  <li>
-    <strong>Publicar:</strong>
-    actualizar documentación metodológica si aplica y verificar que el dashboard
-    cargue correctamente sin errores de conexión.
-  </li>
+<li><strong>Actualizar la base:</strong> reemplazar la fuente de datos por la versión más reciente, verificando que la estructura, nombres de columnas y tipos de datos se mantengan consistentes con el modelo definido.</li>
+<li><strong>Ejecutar proceso ETL:</strong> aplicar limpieza y transformación de datos, incluyendo normalización de Buyer Alias, homologación de categorías, limpieza de descripciones de ítems y estandarización de formatos.</li>
+<li><strong>Transformación monetaria:</strong> eliminar símbolos de moneda, convertir los valores a formato numérico y actualizar el campo <code>spend_usd_num</code> para asegurar cálculos correctos.</li>
+<li><strong>Actualizar variables derivadas:</strong> recalcular <code>lead_time_days</code> (Approved Date – PR Creation Date) y regenerar los indicadores <code>SLA_2_Flag</code>, <code>SLA_5_Flag</code> y <code>SLA_10_Flag</code>.</li>
+<li><strong>Recalcular métricas KPI:</strong> actualizar porcentajes de cumplimiento SLA, promedios de spend por categoría, país y comprador, asegurando coherencia en agregaciones.</li>
+<li><strong>Validación de calidad:</strong> revisar registros duplicados, valores negativos o en cero en Spend, PR sin fecha de aprobación y posibles inconsistencias entre Company Code y País.</li>
+<li><strong>Validar modelo y visualizaciones:</strong> comprobar relaciones del modelo estrella (hechos y dimensiones) y confirmar que los dashboards reflejen correctamente los datos actualizados.</li>
+<li><strong>Publicar:</strong> actualizar documentación metodológica si aplica y verificar que el dashboard cargue correctamente sin errores de conexión.</li>
 </ol>
 
-  <h3>Conclusión</h3>
-  <p>Este análisis de compra muestra que la gestión del HUB no se evalúa únicamente por el volumen de transacciones o el gasto total, sino también por la habilidad de reaccionar de forma eficiente y constante ante las necesidades operativas los 15 países Americanos en donde hace presencia SLV. A pesar de las diferencias notables en la intensidad operativa entre equipos, categorías y regiones, los indicadores de SLA muestran un elevado grado de cumplimiento y resiliencia en el proceso. La concentración del gasto en ciertos países y categorías estratégicas valida las prioridades estructurales dentro de la organización, mientras que la estabilidad relativa en la demanda mensual indica una operación controlada y predecible. Esta herramienta puede ser una estrategia para asegurar continuidad, eficiencia financiera y apoyo oportuno al negocio para las directivas de la empresa.</p>
+<h3>Conclusión</h3>
+<div class="conclusion">
+<p>
+Este análisis de compra muestra que la gestión del HUB no se evalúa únicamente por el volumen de transacciones o el gasto total, sino también por la habilidad de reaccionar de forma eficiente y constante ante las necesidades operativas los 15 países Americanos donde SLB tiene presencia. A pesar de las diferencias en intensidad operativa entre equipos, categorías y regiones, los indicadores de SLA muestran un elevado grado de cumplimiento y resiliencia en el proceso. La concentración del gasto en ciertos países y categorías estratégicas valida las prioridades estructurales dentro de la organización, mientras que la estabilidad relativa en la demanda mensual indica una operación controlada y predecible. Esta herramienta asegura continuidad, eficiencia financiera y apoyo oportuno al negocio.
+</p>
+</div>
 
+</div>
 </body>
 </html>
-
