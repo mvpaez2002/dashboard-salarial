@@ -54,6 +54,8 @@
         <th>Variable (original)</th>
         <th>Tipo</th>
         <th>Descripción</th>
+        <th>Ejemplos</th>
+        
       </tr>
     </thead>
     <tbody>
@@ -186,26 +188,121 @@
   </table>
 
   <h3>2) Variables luego de modeladas</h3>
-  <p class="small">
-    Se adoptó <strong>español</strong> para los campos modelados y se mantuvo consistencia en nombres y descripciones.
-  </p>
+  <h3>Variables Modeladas y Derivadas (ETL)</h3>
 
-  <table>
-    <thead>
-      <tr>
-        <th>Variable modelada</th>
-        <th>Tipo</th>
-        <th>Descripción</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr><td><code>salario_anual</code></td><td>Número</td><td>Salario anual convertido a COP usando la TRM/tasas vigentes del día del ejercicio.</td></tr>
-      <tr><td><code>compensaciones</code></td><td>Número</td><td>Compensaciones monetarias convertidas a COP con la misma referencia de tasa.</td></tr>
-      <tr><td><code>salario_total</code></td><td>Número</td><td>Suma de <code>salario_anual</code> + <code>compensaciones</code> en COP.</td></tr>
-      <tr><td><code>country_sucio</code></td><td>Texto</td><td>Valor original del país, preservado para trazabilidad.</td></tr>
-      <tr><td><code>city_sucio</code></td><td>Texto</td><td>Valor original de ciudad, preservado para trazabilidad.</td></tr>
-    </tbody>
-  </table>
+<table>
+  <thead>
+    <tr>
+      <th>Variable Modelada</th>
+      <th>Tipo de Dato</th>
+      <th>Descripción Funcional</th>
+      <th>Origen / Regla de Cálculo</th>
+    </tr>
+  </thead>
+  <tbody>
+
+    <tr>
+      <td><code>buyer_alias_std</code></td>
+      <td>Categórica Nominal</td>
+      <td>Nombre del comprador estandarizado.</td>
+      <td>Normalización de texto sobre Buyer Alias Final.</td>
+    </tr>
+
+    <tr>
+      <td><code>item_description_clean</code></td>
+      <td>Texto</td>
+      <td>Descripción del ítem limpia sin caracteres especiales ni espacios duplicados.</td>
+      <td>Proceso de limpieza sobre Item Description.</td>
+    </tr>
+
+    <tr>
+      <td><code>categoria_homologada</code></td>
+      <td>Categórica Nominal</td>
+      <td>Categoría estratégica estandarizada para análisis.</td>
+      <td>Homologación de SubCategory_Final.</td>
+    </tr>
+
+    <tr>
+      <td><code>spend_usd_num</code></td>
+      <td>Numérica Continua</td>
+      <td>Valor monetario limpio en formato numérico para cálculos.</td>
+      <td>Eliminación de símbolo "$" + conversión a número.</td>
+    </tr>
+
+    <tr>
+      <td><code>lead_time_days</code></td>
+      <td>Numérica Discreta</td>
+      <td>Días hábiles entre creación y aprobación de la PR.</td>
+      <td>Approved Date – PR Creation Date.</td>
+    </tr>
+
+    <tr>
+      <td><code>SLA_2_Flag</code></td>
+      <td>Binaria (0/1)</td>
+      <td>Valor 1 si cumple SLA a 2 días.</td>
+      <td>Si OTS_2_Days = "OK SLA" entonces 1, de lo contrario 0.</td>
+    </tr>
+
+    <tr>
+      <td><code>SLA_5_Flag</code></td>
+      <td>Binaria (0/1)</td>
+      <td>Valor 1 si cumple SLA a 5 días.</td>
+      <td>Si OTS_5_Days = "OK SLA" entonces 1, de lo contrario 0.</td>
+    </tr>
+
+    <tr>
+      <td><code>SLA_10_Flag</code></td>
+      <td>Binaria (0/1)</td>
+      <td>Valor 1 si cumple SLA a 10 días.</td>
+      <td>Si OTS_10_Days = "OK SLA" entonces 1, de lo contrario 0.</td>
+    </tr>
+
+    <tr>
+      <td><code>pct_sla_2</code></td>
+      <td>Numérica Continua (%)</td>
+      <td>Porcentaje de cumplimiento SLA a 2 días.</td>
+      <td>SUM(SLA_2_Flag) / COUNT(PR Number).</td>
+    </tr>
+
+    <tr>
+      <td><code>pct_sla_5</code></td>
+      <td>Numérica Continua (%)</td>
+      <td>Porcentaje de cumplimiento SLA a 5 días.</td>
+      <td>SUM(SLA_5_Flag) / COUNT(PR Number).</td>
+    </tr>
+
+    <tr>
+      <td><code>pct_sla_10</code></td>
+      <td>Numérica Continua (%)</td>
+      <td>Porcentaje de cumplimiento SLA a 10 días.</td>
+      <td>SUM(SLA_10_Flag) / COUNT(PR Number).</td>
+    </tr>
+
+    <tr>
+      <td><code>avg_spend_categoria</code></td>
+      <td>Numérica Continua</td>
+      <td>Gasto promedio por categoría.</td>
+      <td>AVG(spend_usd_num) agrupado por categoría.</td>
+    </tr>
+
+    <tr>
+      <td><code>avg_spend_pais</code></td>
+      <td>Numérica Continua</td>
+      <td>Gasto promedio por país.</td>
+      <td>AVG(spend_usd_num) agrupado por país.</td>
+    </tr>
+
+    <tr>
+      <td><code>avg_spend_buyer</code></td>
+      <td>Numérica Continua</td>
+      <td>Gasto promedio por comprador.</td>
+      <td>AVG(spend_usd_num) agrupado por buyer_alias_std.</td>
+    </tr>
+
+  </tbody>
+</table>
+
+  
 
   <h3>3) Procedimiento para actualizar datos y aplicar el modelado</h3>
   <ol>
