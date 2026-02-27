@@ -304,14 +304,56 @@
   
 
   <h3>3) Procedimiento para actualizar datos y aplicar el modelado</h3>
-  <ol>
-    <li><strong>Actualizar la base:</strong> reemplazar la fuente de datos por la nueva versión (misma estructura y nombres de columnas).</li>
-    <li><strong>Consultar TRM/tasas:</strong> obtener la TRM USD/COP del Banco de la República para el día del ejercicio y definir tasas para otras monedas usadas en el dataset.</li>
-    <li><strong>Actualizar conversiones:</strong> editar los campos calculados de conversión y reemplazar los valores de tasa por los del día.</li>
-    <li><strong>Recalcular campos:</strong> verificar que <code>salario_anual</code>, <code>compensaciones</code> y <code>salario_total</code> se actualicen sin errores.</li>
-    <li><strong>Validar:</strong> revisar nulos/outliers, confirmar que no haya doble conversión y que los gráficos respondan a la actualización.</li>
-    <li><strong>Publicar:</strong> actualizar el texto de créditos con la TRM (y fecha) utilizada y verificar que el dashboard embebido cargue correctamente.</li>
-  </ol>
+<ol>
+  <li>
+    <strong>Actualizar la base:</strong>
+    reemplazar la fuente de datos por la versión más reciente, verificando que la estructura,
+    nombres de columnas y tipos de datos se mantengan consistentes con el modelo definido.
+  </li>
+
+  <li>
+    <strong>Ejecutar proceso ETL:</strong>
+    aplicar limpieza y transformación de datos, incluyendo normalización de Buyer Alias,
+    homologación de categorías, limpieza de descripciones de ítems y estandarización de formatos.
+  </li>
+
+  <li>
+    <strong>Transformación monetaria:</strong>
+    eliminar símbolos de moneda, convertir los valores a formato numérico y actualizar
+    el campo <code>spend_usd_num</code> para asegurar cálculos correctos.
+  </li>
+
+  <li>
+    <strong>Actualizar variables derivadas:</strong>
+    recalcular <code>lead_time_days</code> (Approved Date – PR Creation Date) y
+    regenerar los indicadores <code>SLA_2_Flag</code>, <code>SLA_5_Flag</code> y
+    <code>SLA_10_Flag</code>.
+  </li>
+
+  <li>
+    <strong>Recalcular métricas KPI:</strong>
+    actualizar porcentajes de cumplimiento SLA, promedios de spend por categoría,
+    país y comprador, asegurando coherencia en agregaciones.
+  </li>
+
+  <li>
+    <strong>Validación de calidad:</strong>
+    revisar registros duplicados, valores negativos o en cero en Spend, PR sin fecha
+    de aprobación y posibles inconsistencias entre Company Code y País.
+  </li>
+
+  <li>
+    <strong>Validar modelo y visualizaciones:</strong>
+    comprobar relaciones del modelo estrella (hechos y dimensiones) y confirmar
+    que los dashboards reflejen correctamente los datos actualizados.
+  </li>
+
+  <li>
+    <strong>Publicar:</strong>
+    actualizar documentación metodológica si aplica y verificar que el dashboard
+    cargue correctamente sin errores de conexión.
+  </li>
+</ol>
 
   <h3>Conclusión</h3>
   <p>ste análisis de compra muestra que la gestión del HUB no se evalúa únicamente por el volumen de transacciones o el gasto total, sino también por la habilidad de reaccionar de forma eficiente y constante ante las necesidades operativas los 15 países Americanos en donde hace presencia SLV. A pesar de las diferencias notables en la intensidad operativa entre equipos, categorías y regiones, los indicadores de SLA muestran un elevado grado de cumplimiento y resiliencia en el proceso. La concentración del gasto en ciertos países y categorías estratégicas valida las prioridades estructurales dentro de la organización, mientras que la estabilidad relativa en la demanda mensual indica una operación controlada y predecible. Esta herramienta puede ser una estrategia para asegurar continuidad, eficiencia financiera y apoyo oportuno al negocio para las directivas de la empresa.</p>
