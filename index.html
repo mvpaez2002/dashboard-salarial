@@ -57,24 +57,132 @@
       </tr>
     </thead>
     <tbody>
-      <tr><td><code>How old are you?</code></td><td>Número</td><td>Edad de la persona encuestada.</td></tr>
-      <tr><td><code>What industry do you work in?</code></td><td>Texto</td><td>Industria o sector económico en el que trabaja.</td></tr>
-      <tr><td><code>Job title</code></td><td>Texto</td><td>Cargo o título del puesto de trabajo principal.</td></tr>
-      <tr><td><code>If your job title needs additional context, please clarify here:</code></td><td>Texto</td><td>Información adicional para aclarar el cargo.</td></tr>
-      <tr><td><code>What is your annual salary?</code></td><td>Número</td><td>Salario anual reportado en moneda local.</td></tr>
-      <tr><td><code>How much additional monetary compensation do you get, if any...</code></td><td>Número</td><td>Compensaciones monetarias adicionales (bonos, horas extra, etc.).</td></tr>
-      <tr><td><code>Please indicate the currency</code></td><td>Texto</td><td>Moneda en la que se reportó el salario/compensación.</td></tr>
-      <tr><td><code>If "Other," please indicate the currency here:</code></td><td>Texto</td><td>Moneda especificada cuando se selecciona “Other”.</td></tr>
-      <tr><td><code>If your income needs additional context, please provide it here:</code></td><td>Texto</td><td>Comentarios adicionales sobre el ingreso.</td></tr>
-      <tr><td><code>What country do you work in?</code></td><td>Texto</td><td>País en el que trabaja la persona.</td></tr>
-      <tr><td><code>If you're in the U.S., what state do you work in?</code></td><td>Texto</td><td>Estado de trabajo (si aplica para EE. UU.).</td></tr>
-      <tr><td><code>What city do you work in?</code></td><td>Texto</td><td>Ciudad reportada por el encuestado (no estandarizada).</td></tr>
-      <tr><td><code>How many years of professional work experience do you have overall?</code></td><td>Número</td><td>Años totales de experiencia profesional.</td></tr>
-      <tr><td><code>How many years of professional work experience do you have in your field?</code></td><td>Número</td><td>Años de experiencia en el campo actual.</td></tr>
-      <tr><td><code>What is your highest level of education completed?</code></td><td>Texto</td><td>Nivel educativo más alto completado.</td></tr>
-      <tr><td><code>What is your gender?</code></td><td>Texto</td><td>Género reportado por el encuestado.</td></tr>
-      <tr><td><code>What is your race? (Choose all that apply.)</code></td><td>Texto</td><td>Identidad racial/étnica reportada (selección múltiple).</td></tr>
-    </tbody>
+  <tr>
+    <td><code>PR Number</code></td>
+    <td>Texto</td>
+    <td>Identificador único de la requisición</td>
+    <td>PO 4519583712</td>
+  </tr>
+
+  <tr>
+    <td><code>Buyer Alias Final</code></td>
+    <td>Categórica Nominal</td>
+    <td>Alias del comprador responsable</td>
+    <td>Confidential</td>
+  </tr>
+
+  <tr>
+    <td><code>SubCategory_Final</code></td>
+    <td>Categórica Nominal</td>
+    <td>Clasificación estratégica o táctica del ítem</td>
+    <td>Tactical</td>
+  </tr>
+
+  <tr>
+    <td><code>Commodity</code></td>
+    <td>Categórica Nominal</td>
+    <td>Código y descripción del commodity</td>
+    <td>[CBCGA01P] Acetylene</td>
+  </tr>
+
+  <tr>
+    <td><code>Categoria del Item</code></td>
+    <td>Categórica Nominal</td>
+    <td>Clasificación macro del bien o servicio</td>
+    <td>Chemicals</td>
+  </tr>
+
+  <tr>
+    <td><code>Week Days</code></td>
+    <td>Numérica Discreta</td>
+    <td>Días hábiles entre creación y aprobación</td>
+    <td>0</td>
+  </tr>
+
+  <tr>
+    <td><code>PR Creation Date</code></td>
+    <td>Temporal</td>
+    <td>Fecha de creación de la requisición</td>
+    <td>15/01/2026</td>
+  </tr>
+
+  <tr>
+    <td><code>Approved Date</code></td>
+    <td>Temporal</td>
+    <td>Fecha de aprobación</td>
+    <td>15/01/2026</td>
+  </tr>
+
+  <tr>
+    <td><code>PR Source</code></td>
+    <td>Categórica Nominal</td>
+    <td>Sistema de origen de la PR</td>
+    <td>Ariba</td>
+  </tr>
+
+  <tr>
+    <td><code>Company Code</code></td>
+    <td>Categórica Nominal</td>
+    <td>Código organizacional</td>
+    <td>CO01</td>
+  </tr>
+
+  <tr>
+    <td><code>Pais</code></td>
+    <td>Categórica Nominal</td>
+    <td>País asociado al Company Code</td>
+    <td>Colombia</td>
+  </tr>
+
+  <tr>
+    <td><code>Requester ID</code></td>
+    <td>Texto</td>
+    <td>Usuario solicitante interno</td>
+    <td>Rogelio Reyes Cruz</td>
+  </tr>
+
+  <tr>
+    <td><code>Item Description</code></td>
+    <td>Texto</td>
+    <td>Descripción detallada del ítem</td>
+    <td>Recarga Acetileno</td>
+  </tr>
+
+  <tr>
+    <td><code>Sum of Requisition Spend USD</code></td>
+    <td>Numérica Continua</td>
+    <td>Valor total de la requisición en USD</td>
+    <td>1.245</td>
+  </tr>
+
+  <tr>
+    <td><code>Urgent Flag</code></td>
+    <td>Binaria</td>
+    <td>Indica si la PR fue marcada como urgente</td>
+    <td>Yes / No</td>
+  </tr>
+
+  <tr>
+    <td><code>OTS_2_Days</code></td>
+    <td>Categórica Binaria</td>
+    <td>Cumplimiento SLA a 2 días</td>
+    <td>OK SLA / Late</td>
+  </tr>
+
+  <tr>
+    <td><code>OTS_5_Days</code></td>
+    <td>Categórica Binaria</td>
+    <td>Cumplimiento SLA a 5 días</td>
+    <td>OK SLA / Late</td>
+  </tr>
+
+  <tr>
+    <td><code>OTS_10_Days</code></td>
+    <td>Categórica Binaria</td>
+    <td>Cumplimiento SLA a 10 días</td>
+    <td>OK SLA / Late</td>
+  </tr>
+</tbody>
   </table>
 
   <h3>2) Variables luego de modeladas</h3>
@@ -108,6 +216,9 @@
     <li><strong>Validar:</strong> revisar nulos/outliers, confirmar que no haya doble conversión y que los gráficos respondan a la actualización.</li>
     <li><strong>Publicar:</strong> actualizar el texto de créditos con la TRM (y fecha) utilizada y verificar que el dashboard embebido cargue correctamente.</li>
   </ol>
+
+  <h3>Conclusión</h3>
+  <p>ste análisis de compra muestra que la gestión del HUB no se evalúa únicamente por el volumen de transacciones o el gasto total, sino también por la habilidad de reaccionar de forma eficiente y constante ante las necesidades operativas los 15 países Americanos en donde hace presencia SLV. A pesar de las diferencias notables en la intensidad operativa entre equipos, categorías y regiones, los indicadores de SLA muestran un elevado grado de cumplimiento y resiliencia en el proceso. La concentración del gasto en ciertos países y categorías estratégicas valida las prioridades estructurales dentro de la organización, mientras que la estabilidad relativa en la demanda mensual indica una operación controlada y predecible. Esta herramienta puede ser una estrategia para asegurar continuidad, eficiencia financiera y apoyo oportuno al negocio para las directivas de la empresa.</p>
 
 </body>
 </html>
